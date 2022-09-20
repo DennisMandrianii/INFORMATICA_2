@@ -172,7 +172,7 @@ int MaggioreMatrice(int m[][C], int righe, int colonne)
 	for(j = 0; j < colonne; j++)
 	{	
 	
-		if(m[i][j] > m)
+		if(m[i][j] < m)
 		{
 			m = m[i][j];
 		}
