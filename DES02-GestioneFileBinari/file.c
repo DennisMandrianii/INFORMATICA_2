@@ -90,7 +90,12 @@ void inserisciRecord(char fileName[], int numRecord)
 
 		printf("\n");
 
-		
+		printf("Inserisci il mese:\n");
+		scanf("%d", &buffer.nascita.mese);
+
+		printf("\n");
+
+
 	}
 
 
