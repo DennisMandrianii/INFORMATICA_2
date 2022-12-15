@@ -1,4 +1,15 @@
-//Esercizio File Binari
+/** ****************************************************************************************
+* \mainpage <File Binari>
+*
+* @brief <Gestione dei file binari>
+* <specifiche del progetto>
+* <specifiche del collaudo>
+* 
+* @author <Dennis Mandriani>
+* @date <15/12/2022> 
+* @version 1.0 <15/12/2022> Versione iniziale
+* @version 1.1 <data> <Descrivere le modifiche apportate>
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,46 +38,26 @@ struct studente
 	
 }typedef studente;
 
-void carica(char FileIN, int);
+/** ****************************************************************************************
+* @brief <inserisce in coda n record con i dati richiesti all’utente. Se il file non esiste va creato e quindi effettuare l’inserimento>
+* @param  <elenco dei parametri in ingresso alla funzione>
+* @retval <valori restituiti>
+* @see <See Also: Describes a cross-reference to classes, functions, methods, variables, ...>
+*
+* @author <autore>
+* @version 1.0 <data> <Descrivere le modifiche apportate>
+* @version 1.1 <data> <Descrivere le modifiche apportate>
+*/
+
+void inserisciRecord(char [], int);
 
 int main()
 {
-	char FileIN = {"carica.txt"};
 	
-	carica(FileIN, N);
-	
-	return 0;
 }
 
-void carica(char FileIN, int dim)
+void inserisciRecord(char fileName[], int numRecord)
 {
-	FILE *fp;
-	
-	int i;
-	
-	struct studente buffer;
-	
-	fp = fopen(FileIN, "w");
-	if(fp != 0)
-	{
-		for(i = 0; i < dim; i++)
-		{
-			printf("Inserisci il matricola:\n");
-			scanf("%d", &buffer.matricola);
-			
-			printf("\n");
-			
-			printf("Inserisci il cognome:\n");
-			scanf("%s", buffer.cognome);
-			
-			printf("\n");
-			
-			
-		}
-		
-	}
-	
-	
-	
+
 }
 
