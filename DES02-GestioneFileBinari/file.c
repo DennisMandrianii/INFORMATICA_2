@@ -208,14 +208,13 @@ void inserisciRecord(char fileName[], int numRecord) // fwrite
 
             fwrite(&buffer,sizeof(struct studente),1,f1);   //con fwrite scrivo tutti i campi richiesti sopra sul file.										
 		}
-
+        
 		fclose(f1);                                         //chiusura file
     }
     else                                                 
     {
         printf("Error 404 File Not Found");
     }
-
 }
 
 void stampaFile(char fileName[])
@@ -269,7 +268,6 @@ void stampaFile(char fileName[])
     }
 
 	fclose(f1);                 //chiusura del file
-
 }
 
 int ricercaRecord(char fileName[], char cognome[]) //se esistono più cognomi restituisco la posizione dell'ultimo trovato
@@ -361,6 +359,7 @@ int stampaRecord(char fileName[], int posizione)
                     {
                         printf("Voti: %d\n", buffer.voti[j]);
                     }
+
                     printf("Giorno: %d\n", buffer.nascita.giorno);
                     printf("Mese: %s\n", buffer.nascita.mese);
                     printf("Anno: %d\n", buffer.nascita.anno);
