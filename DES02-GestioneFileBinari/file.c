@@ -40,7 +40,7 @@ struct studente
 
 /** ****************************************************************************************
 * @brief <La funzione inserisciRecord inserisce le informazioni all'interno del record e le scrive nel file>
-* @param <una stringa e un intero(char fileName[] sarebbe il file inserito, int numRecord)>
+* @param <Ha bisogno di un intero (char fileName[] sarebbe il file inserito, int numRecord rappresenta il numero effettivo dei record presenti)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -49,7 +49,7 @@ int inserisciRecord(char fileName[], int numRecord);
 
 /** ****************************************************************************************
 * @brief<La funzione stampaFile stampa sul monitor le informazioni di tutti i record presenti>
-* @param <n.1 stringa (char fileName[] sarebbe il file inserito)>
+* @param <(char fileName[] sarebbe il file inserito)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -58,7 +58,7 @@ int stampaFile(char fileName[]);
 
 /** ****************************************************************************************
 * @brief <La funzione ricercaRecord controlla che il record abbia il campo cognome uguale al parametro cognome, stampando in seguito età e media dei voti>
-* @param <n.2 stringhe (char fileName[] sarebbe il file inserito, char cognome[]) cognome che inserisce l'utente>
+* @param <Ha bisogno di una stringa(char fileName[] sarebbe il file inserito, char cognome[]) cognome che inserisce l'utente>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -67,7 +67,7 @@ int ricercaRecord(char fileName[], char cognome[]);
 
 /** ****************************************************************************************
 * @brief <La funzione stampaRecord Stampa le informazioni presenti nel record dando la posizione>
-* @param <n.1 stringa e un intero  (char fileName[] sarebbe il file inserito, int posizione)>
+* @param <Ha bisogno di un intero che dia la posizione(char fileName[] sarebbe il file inserito, int posizione)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -75,8 +75,8 @@ int ricercaRecord(char fileName[], char cognome[]);
 int stampaRecord(char fileName[], int posizione);   
 
 /******************************************************************************************
-* @brief <La funzione correggiRecord Visualizza le informazioni del record richiamando la funzione stampaRecord e corregge l’intero record, con i nuovi dati richiesti all’utente>
-* @param <n.1 stringa e un intero (char fileName[] sarebbe il file inserito, int posizione)>
+* @brief <La funzione correggiRecord Visualizza le informazioni del record richiamando la funzione stampaRecord e corregge l’intero record, con nuovi dati>
+* @param <Ha bisogno di un intero che dia la posizione(char fileName[] sarebbe il file inserito, int posizione)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -84,8 +84,8 @@ int stampaRecord(char fileName[], int posizione);
 int correggiRecord(char fileName[], int posizione); 
 
 /******************************************************************************************
-* @brief <La funzione numeroRecordRestituisce il numero di record presenti nel file>
-* @param <n.1 stringa  (char fileName[] sarebbe il file inserito)>
+* @brief <La funzione numeroRecord Restituisce il numero dei record presenti nel file inserito>
+* @param <(char fileName[] sarebbe il file inserito)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022>
 *******************************************************************************************/
@@ -102,13 +102,13 @@ int main()
     int r;                                      //usata per richiamare funzioni di tipo int
     int pos;                                    //usata per la posizione del record
     int scelta;                                 //usata per fare una scelta all'interno del menù dello switch case
-	char stringa [S];                           //usata come parametro cognome all'interno delle funzioni
+    char stringa [S];                           //usata come parametro cognome all'interno delle funzioni
     int s;
 	
     //funzione n.1
 
-	printf("Inserisci il numero di studenti:\n");
-	scanf("%d",&pos);
+    printf("Inserisci il numero di studenti:\n");
+    scanf("%d",&pos);
 	
     inserisciRecord(NomeFile,pos); 
 
@@ -159,13 +159,13 @@ int main()
     return 0;
 }
 
-void inserisciRecord(char fileName[], int numRecord) // fwrite
+int inserisciRecord(char fileName[], int numRecord) // fwrite
 {
     FILE *f1;                           //puntatore al file
     struct studente buffer;             //dichiarazione della variabile buffer di tipo struct studente
     int j, i;                           //Servono per i cicli For
 
-    f1 = fopen(fileName, "wb");            //apertura del file binario in scrittura
+    f1 = fopen(fileName, "ab");           
                                                    
     if(f1 != NULL)                        //controllo degli errori sull apertura file
     {
@@ -210,14 +210,16 @@ void inserisciRecord(char fileName[], int numRecord) // fwrite
 		}
         
 		fclose(f1);                                         //chiusura file
+	    return 0;
     }
     else                                                 
     {
         printf("Error 404 File Not Found");
+	    return -1;
     }
 }
 
-void stampaFile(char fileName[])
+int stampaFile(char fileName[])
 {
     FILE *f1;                           //puntatore al file
     struct studente buffer;             //dichiarazione della variabile buffer di tipo struct studente
@@ -327,11 +329,9 @@ int ricercaRecord(char fileName[], char cognome[]) //se esistono più cognomi re
     }
     else                        
         printf("Error 404 File Not Found");
+    
+        return pos;
     }
-
-    return pos;                                         //restituisce la posizione del record
-
-}
 
 int stampaRecord(char fileName[], int posizione) 
 {
@@ -368,14 +368,16 @@ int stampaRecord(char fileName[], int posizione)
 					return 0;                        //return 0  se il record è stato trovato                 
               	}
               	
-              	fclose(f1);                           
+              	fclose(f1);   
+	    return 0;
 	}
     else                                               
     {
         printf("impossibile aprire");
+	    return -1;
     }
 
-	return -1;                                      //return -1 se il record non è stato trovato
+	
 }
 
 int correggiRecord(char fileName[], int posizione)
@@ -398,9 +400,8 @@ int correggiRecord(char fileName[], int posizione)
             printf("inserisci la posizione del record da stampare");
             scanf("%d", &pos);
 
-            stampaRecord(fileName,pos);
-
-            //correzione del record tramite dati richiesti all'utente
+        
+           //Correzione dei dati inseriti precedentemente
 
             printf("Inserisci matricola:\n");
             scanf("%d", &buffer.matricola);
