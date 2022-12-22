@@ -39,26 +39,26 @@ struct studente
 //dichiarazione delle funzioni
 
 /** ****************************************************************************************
-* @brief <La funzione inserisce le informazioni all'interno del record e le scrive nel file>
-* @param <una stringa e un intero(char fileName[], int numRecord)>
+* @brief <La funzione inserisciRecord inserisce le informazioni all'interno del record e le scrive nel file>
+* @param <una stringa e un intero(char fileName[] sarebbe il file inserito, int numRecord)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
 
-void inserisciRecord(char fileName[], int numRecord);
+int inserisciRecord(char fileName[], int numRecord);
 
 /** ****************************************************************************************
-* @brief<La funzione stampa sul monitor le informazioni all'interno del record leggendole dal file>
-* @param <n.1 stringa (char fileName[])>
+* @brief<La funzione stampaFile stampa sul monitor le informazioni di tutti i record presenti>
+* @param <n.1 stringa (char fileName[] sarebbe il file inserito)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
 
-void stampaFile(char fileName[]);          
+int stampaFile(char fileName[]);          
 
 /** ****************************************************************************************
-* @brief <La funzione controlla che il record abbia il campo cognome uguale al parametro cognome, stampando in seguito età e media dei voti>
-* @param <n.2 stringhe (char fileName[],char cognome[])>
+* @brief <La funzione ricercaRecord controlla che il record abbia il campo cognome uguale al parametro cognome, stampando in seguito età e media dei voti>
+* @param <n.2 stringhe (char fileName[] sarebbe il file inserito, char cognome[]) cognome che inserisce l'utente>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -66,8 +66,8 @@ void stampaFile(char fileName[]);
 int ricercaRecord(char fileName[], char cognome[]);  
 
 /** ****************************************************************************************
-* @brief <Stampa le informazioni presenti nel record dando la posizione>
-* @param <n.1 stringa e un intero  (char fileName[],int posizione)>
+* @brief <La funzione stampaRecord Stampa le informazioni presenti nel record dando la posizione>
+* @param <n.1 stringa e un intero  (char fileName[] sarebbe il file inserito, int posizione)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -75,8 +75,8 @@ int ricercaRecord(char fileName[], char cognome[]);
 int stampaRecord(char fileName[], int posizione);   
 
 /******************************************************************************************
-* @brief <Visualizza le informazioni del record richiamando la funzione stampaRecord e corregge l’intero record, con i nuovi dati richiesti all’utente>
-* @param <n.1 stringa e un intero (char fileName[], int posizione)>
+* @brief <La funzione correggiRecord Visualizza le informazioni del record richiamando la funzione stampaRecord e corregge l’intero record, con i nuovi dati richiesti all’utente>
+* @param <n.1 stringa e un intero (char fileName[] sarebbe il file inserito, int posizione)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022> 
 *******************************************************************************************/
@@ -84,8 +84,8 @@ int stampaRecord(char fileName[], int posizione);
 int correggiRecord(char fileName[], int posizione); 
 
 /******************************************************************************************
-* @brief <Restituisce il numero di record presenti nel file>
-* @param <n.1 stringa  (char fileName[])>
+* @brief <La funzione numeroRecordRestituisce il numero di record presenti nel file>
+* @param <n.1 stringa  (char fileName[] sarebbe il file inserito)>
 * @author <Dennis Mandriani>
 * @version 1.0 <21/12/2022>
 *******************************************************************************************/
