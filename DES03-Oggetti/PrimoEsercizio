@@ -1,0 +1,56 @@
+/**************************************************************************************************************
+* @brief PRIMO ESERCIZIO C++                                                                                  *                                                      
+* @author Dennis Mandriani 4^H                                                                                *
+* @date 12/01/2023		                                                                                      *						                                                          *
+/*************************************************************************************************************/
+
+// Inclusione delle Librerie
+
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std;
+	
+class Frazione
+{
+	private:
+		
+	int numeratore;
+	int denominatore;
+	
+	public:
+	
+	Frazione()
+	{
+		void setNumeratore(int n)
+	{
+		numeratore = n;
+	}
+	void setDenominatore(int d)
+	{
+		denominatore = d;
+	}
+	void getNumeratore()
+	{
+		return numeratore;
+	}
+	void getDenominatore()
+	{
+		return denominatore;
+	}
+	void stampa()
+	{
+		cout <<numeratore <<"/"<<denominatore;
+	}		
+    }	
+}
+
+int main()
+{
+	Frazione f1;
+	
+	f1.setnumeratore(12);
+	f1.setdenominatore(3);
+	f1.stampa();
+}
